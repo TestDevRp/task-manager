@@ -2,12 +2,13 @@ FROM python:3.9
 
 WORKDIR /app
 
-COPY requirements.txt /app/
-RUN pip install --no-cache-dir -r /app/requirements.txt
+# Copy and install dependencies first
+COPY backend/requirements.txt /app/
+RUN pip install --no-cache-dir -r requirements.txt
 
-COPY backend/app.py /app/  
-COPY backend /app/         
+# Copy the entire backend folder (including app.py) to /app
+COPY backend/ /app/
 
 EXPOSE 5000  
 
-CMD ["python", "/app/app.py"]
+CMD ["python", "app.py"]
