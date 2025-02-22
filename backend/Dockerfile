@@ -5,8 +5,8 @@ WORKDIR /app
 COPY requirements.txt /app/
 RUN pip install --no-cache-dir -r /app/requirements.txt
 
-COPY backend/app.py /app/  # Explicitly copying app.py
-COPY backend /app/         # Copy everything from backend folder
+COPY backend/app.py /app/  
+COPY backend /app/         
 
 EXPOSE 5000  
 
